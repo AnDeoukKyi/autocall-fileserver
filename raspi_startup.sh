@@ -2,12 +2,6 @@
 
 
 WORKDIR="$HOME/autocall-fileserver"
-REPO="https://github.com/AndeoukKyi/autocall-fileserver.git"
-
-
-if [ ! -d "$WORKDIR" ]; then
-  git clone "$REPO" "$WORKDIR"
-fi
 
 cd "$WORKDIR" || exit 1
 
@@ -17,10 +11,5 @@ if [ ! -d ".venv" ]; then
 fi
 
 source .venv/bin/activate
-
-
-pip install --upgrade pip
-pip install -r requirements.txt
-
 
 uvicorn server:app --host 0.0.0.0 --port 7211
